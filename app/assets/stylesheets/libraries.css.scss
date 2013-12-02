@@ -1,0 +1,43 @@
+// Place all the styles related to the libraries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#content {
+	
+	#book-list {
+		padding: 1rem;
+		width: calc(60% - 2rem);
+		background: #ececec;
+		border: 1px solid #3a332e;
+		h2 {
+			font-weight: normal;
+			font-size: 1.2rem;
+			margin: -1rem;
+			margin-bottom: 1rem;
+			padding: 0.5rem;
+			border-bottom: 1px solid #3a332e;
+			color: #3a332e;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				padding: 0.25rem 0;
+				overflow: hidden;
+				div {
+					font-size: 1rem;
+					float: right;
+					a {
+						padding: 0.25rem 0.4rem;
+						font-size: 75%;
+					}
+				}
+				&.odd {
+					background: #f2f2f2;
+				}
+			}
+		}
+	}
+	
+}

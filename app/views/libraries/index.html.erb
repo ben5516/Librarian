@@ -1,0 +1,41 @@
+<h1>Libraries</h1>
+
+<p>
+	Here is a list of all libraries that have been entered into the system.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Address (Continued)</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @libraries.each do |library| %>
+      <tr>
+        <td><%= library.name %></td>
+        <td><%= library.address %></td>
+        <td><%= library.address_cont %></td>
+        <td><%= library.city %></td>
+        <td><%= library.state %></td>
+        <td><%= library.zip %></td>
+        <td><%= link_to 'Details', library %></td>
+        <td><%= link_to 'Edit', edit_library_path(library) %></td>
+        <td><%= link_to 'Delete', library, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Library', new_library_path %>

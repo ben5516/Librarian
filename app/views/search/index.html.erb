@@ -1,0 +1,71 @@
+<h1>Search Books</h1>
+<p>
+	Search for books in a particular library. If the book is not directly available from the library selected, it might still be available through interlibrary loan.
+</p>
+<div style="text-align: center; padding: 1rem">
+	<%= form_tag("/search/results", method: 'get') do %>
+		<table id="search-form">
+			<tr>
+				<td>
+					<%= label_tag :library_id, "Library" %>
+				</td>
+				<td>
+					<%= label_tag :search_field, "Search by" %>
+				</td>
+				<td>
+				</td>
+				<td>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<%= select_tag :library_id, options_from_collection_for_select(@libraries, 'id', 'name', params[:library_id]) %> –&nbsp;&nbsp;
+				</td>
+				<td>
+					<%= select_tag :search_field, options_for_select([["Book Title", :title], ["Book ISBN", :ISBN]], params[:search_field]) %> – &nbsp; 
+				</td>
+				<td>
+					<%= search_field_tag :query, params[:query] %>
+				</td>
+				<td>
+					<%= submit_tag "Search"  %>
+				</td>
+			</tr>
+		</table>
+	<% end %>
+</div>
+<hr />
+<% if @search %>
+	<% if @search.book_exists? %>
+		<% if @search.count > 1 %>
+			<p>
+				<strong><%= @search.count %> books matched your search.</strong>
+			</p>
+		<% end %>
+		
+		<% unless @search.results(:library).empty? %>
+			<h2><%= @search.library.name %> has <%= @search.results(:library).size > 1 ? 'these books.' : 'this book.' %></h2>
+			
+			<ul class="book-results">
+				<% @search.results(:library).each do |book| %>
+					<%= render partial: "book", locals: { book: book } %>
+				<% end %>
+			</ul>
+		<% end %>
+		
+		<% unless @search.results(:interlibrary_loan).empty? %>
+			<h2><%= @search.library.name %> can get <%= @search.results(:interlibrary_loan).size > 1 ? 'these books' : 'this book' %> through interlibrary loan.</h2>
+			
+			<ul class="book-results">
+				<% @search.results(:interlibrary_loan).each do |book| %>
+					<%= render partial: "book", locals: { book: book } %>
+				<% end %>
+			</ul>
+		<% end %>
+		
+	<% else %>
+		<p style="text-align: center;font-style: italic">
+			No book was found with the <%= @search.search_field_humanized %> '<%= @search.query %>'.
+		</p>
+	<% end %>
+<% end %>

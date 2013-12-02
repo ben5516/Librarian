@@ -1,0 +1,53 @@
+<h1><%= @library.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="right-col">
+	<strong>Add books to this library</strong>
+	<%= form_for(LibraryBook.new, remote: true, html: {:'data-type' => 'json'}) do |f| %>
+		<%= f.hidden_field :library_id, value: @library.id %>
+		<%= f.hidden_field :book_id %>
+		<%= text_field_tag :book_name, "", {style: "width: calc(100% - 6.5rem)", placeholder: 'Search All Books'} %>
+		<%= f.submit("Add Book", style: "width: 4.5rem;margin-left: 0.5rem", id: 'library_book_commit', disabled: true) %>
+	<% end %>
+	
+	<script type="text/javascript">
+		$( "#book_name" ).autocomplete({
+			source: "/books/search",
+			minLength: 2,
+			select: function( event, ui ) {
+				if (ui.item) {
+					$("#library_book_book_id").val(ui.item.id);
+					$("#library_book_commit").attr('disabled', false);
+				}
+			}
+		});
+	</script>
+	
+</div>
+
+<div class="right-col">
+	<strong>Most popular book in this library</strong><br />
+	<em>
+		<%= @popular ? @popular.book.title : "No books requested yet." %>
+	</em>
+</div>
+
+<div class="right-col">
+	<address>
+		<strong>Address:</strong><br />
+		<%= @library.address %><br />
+		<% unless @library.address_cont.blank? %>
+			<%= @library.address_cont %><br />
+		<% end %>
+		<%= @library.city %>, <%= @library.state %> <%= @library.zip %>
+	</address>
+	<p>
+		<%= link_to 'Edit', edit_library_path(@library) %> |
+		<%= link_to 'Back', libraries_path %>
+	</p>
+</div>
+
+<div id="book-list">
+	<%= render partial: 'book_list' %>
+</div>

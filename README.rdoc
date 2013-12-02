@@ -1,0 +1,129 @@
+== README
+
+Librarian requires the following to run:
+
+* Ruby 2.0
+* Bundler
+* Rails 4
+
+It was built to fulfill the following requirements:
+
+[Create libraries]
+	Go to http://localhost:3000/libraries/new
+[Create books]
+	Go to http://localhost:3000/books/new
+Add different books to different libraries
+	This is available on the libraries#show page. Once you've created a library and several books, go to http://localhost:3000/libraries, click 'Details' on the library you want to add     books too, and use the form in the top right corner of the page to search for and add a book (by title or ISBN).
+[Find out if a library has a certain book, given the book's title]
+	This is available via the search page. Go to http://localhost:3000/search
+[Find out if a library has a certain book, given its ISBN number]
+	This is available via the search page. Go to http://localhost:3000/search
+[Find out if a library can get a book (by title or ISBN) through interlibrary loan from any of the other libraries you created]
+	This is also available via the search page. When you search for a book, the search page will provide you first with results that are available in the library you selected, but then also    give you results that are available through interlibrary loan. Note: If the book is available from the selected library, it won't be listed in the interlibrary loan section.
+[See what a library's most popular book is (where popularity is measured by the number of times a book's been requested; different libraries should have different answers to this question)]
+	This is available on the libraries#show page. Go to http://localhost:3000/libraries, click 'Details' on a library and the most popular book will be shown underneath the Add Books form.   	 Use the 'Request Book' button to make a book more popular.
+	
+=== Adding Books
+
+The app has been seeded with some test data, but please note that valid ISBN numbers are required to create a book. Here is a list of ISBN numbers that can be used:
+
+023300249-9
+984044739-4
+537002553-3
+944387384-2
+860751612-4
+366186356-8
+222857297-7
+671116140-8
+122011941-5
+850205592-5
+984071288-8
+728450949-X
+973941462-1
+792034325-9
+087844307-X
+333937434-1
+696484771-5
+199552343-7
+970779095-4
+651698245-7
+436204339-X
+227957201-X
+581015859-5
+244833246-0
+647216486-X
+446921811-1
+638881376-3
+687784155-7
+659788276-8
+551629497-5
+344471902-7
+685190953-7
+847347082-6
+933250790-2
+384288248-3
+689048018-X
+927249105-3
+544619641-4
+396211405-X
+455025300-2
+500504643-7
+500412658-5
+997832030-X
+942706031-X
+859943750-X
+328573379-9
+156558231-4
+252697150-0
+414205076-1
+002169581-4
+155667004-4
+244418542-0
+109456354-4
+286358334-4
+304077033-0
+479918736-8
+688590889-4
+423642171-2
+380523663-8
+904844389-X
+809920208-2
+674944554-3
+001356364-5
+761567939-7
+131804541-X
+310947846-3
+188081704-7
+167613344-5
+766633084-7
+906602718-5
+074721696-7
+141582795-8
+106619737-7
+930933555-6
+578905564-8
+983568764-1
+801038620-0
+960191134-0
+509494148-8
+148415784-2
+896129257-9
+963366374-1
+286933111-8
+507392490-8
+650161359-0
+461061765-X
+734668259-9
+829310618-2
+497385606-1
+404924306-7
+323183916-5
+009795077-7
+638548417-3
+808958438-1
+900174454-0
+893399998-1
+874721432-5
+423691628-2
+261612277-4
+222043643-8

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Librarian</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+	<%= yield :head %>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<%= link_to "Librarian", root_url, :id => "logo" %>
+		<nav id="menu">
+			<%= link_to "Libraries", libraries_path, :class => menu_class('libraries') %> 
+			<%= link_to "Books", books_path, :class => menu_class('books') %> 
+			<%= link_to "Find a Book", search_path, :class => menu_class('search') %>
+		</nav>
+	</div>
+	<div id="content">
+		<%= yield %>
+	</div>
+</div>
+
+</body>
+</html>

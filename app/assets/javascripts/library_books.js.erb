@@ -1,0 +1,53 @@
+function resetBookForm() {
+	$("#library_book_id, #book_name").val('');
+	$("#library_book_commit").attr('disabled', true);
+}
+
+$(document).on("ready page:load", function() {
+	
+	// update the book list if it changes
+	$(document).on("book_list:changed", function() {
+		var currentUrl = window.location.toString().split('?');
+		var newUrl = currentUrl[0] + "/book_list" + "?" + currentUrl[1];
+		$.get(newUrl, function(data, response) {
+			$("#book-list").html(data);
+		});
+	});
+	
+	
+	// handle deleted library_book events
+	$("#book-list").on("ajax:success", function(event) {
+		if ($(event.target).hasClass('remove-book')) {
+			$(document).trigger("book_list:changed");
+		}
+	});
+	
+	$(".remove-book").on("ajax:error", function(event) {
+		alert('Error removing book from this library, please try again.');
+	});
+	
+	
+	// handle the new book events
+	$("#new_library_book").on("ajax:success", function(event, response) {
+		alert('Book added.');
+		resetBookForm();
+		$(document).trigger("book_list:changed");
+	});
+	
+	$("#new_library_book").on("ajax:error", function(event, response) {
+		resetBookForm();
+		alert(response.responseJSON.join("\n"));
+	});
+	
+	// handle book requests
+	$("#book-list").on("ajax:success", function(event) {
+		if ($(event.target).hasClass('request-book')) {
+			alert("Book has been requested.");
+		}
+	});
+	
+	$(".request-book").on("ajax:error", function(event) {
+		alert("Error requesting book.");
+	});
+	
+});

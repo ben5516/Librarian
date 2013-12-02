@@ -1,0 +1,23 @@
+// Place all the styles related to the search controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#content {
+	table#search-form {
+		border: 0;
+		margin: 0 auto;
+		td {
+			text-align: left;
+			padding: 0;
+			border: 0;
+			input[type=search] {
+				font-size: 1rem;
+				padding: 0.25rem;
+				width: 14rem;
+			}
+			input[type=submit] {
+				font-size: 1rem;
+				padding: 0.5rem 1rem;
+			}
+		}
+	}
+}

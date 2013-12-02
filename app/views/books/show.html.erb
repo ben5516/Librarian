@@ -1,0 +1,23 @@
+<h1><%= @book.title %></h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="right-col">
+	<% if @book.libraries.empty? %>
+		<em>This book is currently not in any libraries.</em>
+	<% else %>
+		<strong>This book is in the following libraries:</strong>
+		<% @book.libraries.each do |library| %>
+		<%= library.name %><br />
+		<% end %>
+	<% end %>
+</div>
+
+<p>
+  <strong>ISBN:</strong>
+  <%= @book.ISBN %>
+</p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
