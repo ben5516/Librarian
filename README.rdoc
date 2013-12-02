@@ -8,25 +8,25 @@ Librarian requires the following to run:
 
 It was built to fulfill the following requirements:
 
-* Create libraries
+*Create libraries*
 	Go to http://localhost:3000/libraries/new
 
-* Create books
+*Create books*
 	Go to http://localhost:3000/books/new
 
-* Add different books to different libraries
+*Add different books to different libraries*
 	This is available on the libraries#show page. Once you've created a library and several books, go to http://localhost:3000/libraries, click 	'Details' on the library you want to add     books too, and use the form in the top right corner of the page to search for and add a book (by 	title or ISBN).
 
-* Find out if a library has a certain book, given the book's title
+*Find out if a library has a certain book, given the book's title*
 	This is available via the search page. Go to http://localhost:3000/search
 
-* Find out if a library has a certain book, given its ISBN number
+*Find out if a library has a certain book, given its ISBN number*
 	This is available via the search page. Go to http://localhost:3000/search
 
-* Find out if a library can get a book (by title or ISBN) through interlibrary loan from any of the other libraries you created]
+*Find out if a library can get a book (by title or ISBN) through interlibrary loan from any of the other libraries you created]*
 	This is also available via the search page. When you search for a book, the search page will provide you first with results that are available 	 in the library you selected, but then also    give you results that are available through interlibrary loan. Note: If the book is available   	 from the selected library, it won't be listed in the interlibrary loan section.
 
-* See what a library's most popular book is (where popularity is measured by the number of times a book's been requested; different libraries should have different answers to this question)
+*See what a library's most popular book is (where popularity is measured by the number of times a book's been requested; different libraries should have different answers to this question)*
 	This is available on the libraries#show page. Go to http://localhost:3000/libraries, click 'Details' on a library and the most popular book 	will be shown underneath the Add Books form.   	 Use the 'Request Book' button to make a book more popular.
 	
 === Adding Books
